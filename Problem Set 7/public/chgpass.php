@@ -1,0 +1,28 @@
+<?php
+
+    // configuration
+    require("../includes/config.php"); 
+
+    // if user reached page via GET (as by clicking a link or via redirect)
+    if ($_SERVER["REQUEST_METHOD"] == "GET")
+    {
+        // else render form
+        render("chgpass_form.php", ["title" => "Chage oldpass"]);
+    }
+
+    // else if user reached page via POST (as by submitting a form via POST)
+    elseif ($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+		$oldp = query("SELECT `hash` FROM `users` WHERE id = ? ",$_SESSION["id"]);
+		$oldp=$oldp[0];
+    	if ( crypt($_POST["oldpass"], $oldp["hash"]) != $oldp["hash"])
+    		apologize("Wrong old-oldpass");	
+    	else if($_POST["newpass"] != $_POST["re-newpass"])
+    		apologize("Password doesn't MATCH!!");
+    	else
+    	{
+    		query("UPDATE `users` SET `hash`= ? WHERE id = ?",crypt($_POST["newpass"]),$_SESSION["id"]);
+    		render("chgpass.php");    	
+    	}
+    }
+?>

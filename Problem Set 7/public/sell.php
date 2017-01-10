@@ -1,0 +1,36 @@
+<?php
+
+    // configuration
+    require("../includes/config.php");
+
+    // if user reached page via GET (as by clicking a link or via redirect)
+    if ($_SERVER["REQUEST_METHOD"] == "GET")
+    {
+        // else render form
+        render("sell_form.php", ["title" => "quote"]);
+    }
+
+    // else if user reached page via POST (as by submitting a form via POST)
+    else if ($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+    	$mnstock = lookup($_POST["symbol"]);
+    	if($_POST["shares"] == "")
+    		apologize("You must select a stock to sell.");
+    	$stocks = query("SELECT `shares` FROM `tbl` WHERE id = ? AND symbol = ? ",$_SESSION["id"],strtoupper($_POST["symbol"]));
+    	$stock = $stocks[0];
+    	if($stock["shares"] < $_POST['shares'])
+    		apologize("insufficient shares");
+    	else
+    	{
+    		$cash = $mnstock["price"]*$_POST["shares"];
+    		$s=query("INSERT INTO `history`(`id`, `d&t`, `transaction`, `symbol`, `shares`,`price`) VALUES ( ?,NOW(),?,?,?,?)", $_SESSION["id"],"SELL",strtoupper($_POST["symbol"]),$_POST["shares"],number_format($mnstock["price"], 2, '.', ','));
+    		$S=query("UPDATE `users` SET `cash` = cash + ?  WHERE id = ? ", $cash,$_SESSION["id"]);
+    		if($stock["shares"] != $_POST['shares'])
+    		$s=query("UPDATE `tbl` SET `shares` = shares - ? WHERE id = ? AND symbol = ?",$_POST["shares"],$_SESSION["id"],strtoupper($_POST["symbol"]));
+    		else
+    		$s=query("DELETE FROM `tbl` WHERE id = ? AND symbol = ?",$_SESSION["id"],strtoupper($_POST["symbol"]));
+    	}
+    	redirect("index.php");
+    }
+    
+  ?>

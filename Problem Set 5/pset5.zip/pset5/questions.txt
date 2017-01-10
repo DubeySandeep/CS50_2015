@@ -1,0 +1,17 @@
+0.  pneumonoultramicroscopicsilicovolcanoconiosis is the biggest word possible with a proper meaning i.e; in dictionary.
+1.  The getrusage() function shall provide measures of the resources used by the current process or its terminated and 
+    waited-for child processes
+2.  There are sixteen(16) members in struct rusage.
+3.  the struct tye rusage has many internal values aand pointer which can be ultered if we dont use tthe refrence value. 
+4.  In "for(c = fgetc(dict);c != '\n' && c != EOF;c= fgetc(dict)) loop , firstly we we go with intializer i,e; the first
+    statement then, we check it via 2nd statment after that the 3rd statment work then again for checkin and so on till 
+     the 2nd statment goes wrong.
+5.  It would take extra time if we use fscanf intead of fgetc i.e; if for "fgec" it takes n time then for scanf it will
+    take  approx 2n time.
+6.  so that for any such errors in load or check function it doesnt check other files or word , and if so theen it will
+    exit with NULL.
+7.  i have used "Tries" to implement this massive dictionary i.e; a tree of 26 parents(:p) which have the adress for the
+    second character of the word and so on and at the end of word it will contain bool data type with true value in it. 
+8.  firstly total time was 0.14 secs.
+9.  i just substituted "for" loops with "while";
+10. i hope their isn't so :p .

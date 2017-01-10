@@ -1,0 +1,3 @@
+<?php
+	print($shares." share of<i> ".$name."</i>(<b>".$symbol."</b>) "."<strong>$".$price."</strong>");
+?>

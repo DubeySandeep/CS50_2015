@@ -1,0 +1,40 @@
+
+<table class="table table-striped">
+
+    <thead align= "center">
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Purchased @</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+	<tbody align= "left">
+	<?php	if($positions == []): ?> 
+	<tr>
+        <td colspan="3"></td>
+        <td colspan = "5"><i>No Transaction</i></td>
+    </tr>
+	<?php endif ?>
+<?php foreach ($positions as $position): ?>
+
+    <tr>
+        <td><?= $position["symbol"] ?></td>
+        <td><?= $position["name"] ?></td>
+        <td><?= $position["shares"] ?></td>
+        <td><?= "$".number_format($position["purchase"], 2, '.', ' ')?></td>
+        <td><?= "$".number_format($position["price"], 2, '.', ' ')?></td>
+        <td><?="$".number_format($position["shares"]*$position["price"], 2, '.', ' ') ?>
+    </tr>
+
+<?php endforeach ?>
+	<tr>
+        <td colspan="5"><b>CASH</b></td>
+        <td><b><?= "$".number_format($cash["cash"], 2, '.', ' ')?></b></td>
+    </tr>
+
+	</tbody>
+</table>
+

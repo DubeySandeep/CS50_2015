@@ -1,0 +1,9 @@
+<form action="quote.php" method="post">
+    <fieldset>
+        <div class="form-group" style="position: relative;left: 22px;top: 30px">
+            <input autofocus class="form-control" name="symbol" placeholder="Symbol" type="text"/>
+            <i type="submit" class="material-icons" style="font-size:25px;color:grey;position: relative;left: 22px;top: 5px"><a type="submit">search</a></i>
+        </div>
+    </fieldset>
+</form>
+

@@ -1,0 +1,35 @@
+0.  BMP: 32 bit color, or over 4 billion
+	GIF: 8 bits, 256 colors
+	JPEG: 24 bit, 16 million
+	PNG: 24 bit, 16 million
+1.  Among those formats PNG supports animation.
+2.  Lossy compression throws away some of the data in a file.  
+    Lossless uses an algorithm to compress a file that is reversible, hence, 
+    the quality of the file can move back and forth between the two states
+3.  JPG is loosy compressed.
+4.  FAT stands for File Allocation Table; when a file is deleted, the information in the
+    address table is erased, but the file itself remains on the hard drive.
+5.  Delete files using a secure delete option. That replaces the section on disc with all zeroes.
+6.  The stdint.h header shall declare sets of integer types                   
+    having specified memory, and shall define corresponding sets             
+    of macros. It shall also define macros that specify limits          
+    of integer types corresponding to types defined in other     
+    standard headers.
+7.  uintN _t designates an unsigned integer type with width N. 
+    Thus, uint8_t,uint16_t,uint32_t denotes an unsigned integer    
+    type with a width of exactly 8 , 16 ,32 bits respectively.  
+    whereas int32_t denots a signed integer type with a width of 
+    32 bits.
+8.  BYTE is 8 bits; DWORD is 32 bits unsigned integer;LONG is 32 bits signed integer;WORD is 16 bits unsigned integer. 
+9.  The first two bytes of a BMP is a WORD and denotes bfType, which specifies the file type. It must be
+    set to the signature word BM (0x4D42) to indicate bitmap.
+10. biSize is the size of the BITMAPINFOHEADER structure given in bytes (usually equals 40);whereas bfSize is the
+    total size of the image and file i.e; biImageSize + 54.
+11. If biHeight is negative, the bitmap is a top-down , and it confirs that the file is uncompressed.
+12. Each pixel has R(red) G(green) B(blue) of 8 bits. so the total size for each pixel is 24 Bits. 
+13. fopen may return NULL, in case if the file doesnt exist, or unable to open etc. so its for sanaty check.
+14. The thir argument in fread is 1 is just for reading 1 pixel at a time.
+15. if the biWidth is 3 then the no. of padding will be 1.
+16. fseek() moves the position of the offset inside the file and helps to change its position.
+17. this argumrnt is used inside the fseek() function to make the offset provided to the current position 
+18. It was being done by Rob Bowden.

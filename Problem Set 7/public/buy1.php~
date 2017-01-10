@@ -1,0 +1,7 @@
+$stock = lookup($_POST["symbol"]);
+    	if($stock["name"] == "")
+    	apologize("No such stock with this symbol");
+    	if else(query("SELECT `id`, `symbol` FROM `tbl` WHERE (?,?)",$_SESSION["id"],$stock["symbol"])===false)
+    				
+    	else
+    	render("buy.php",$stock);
